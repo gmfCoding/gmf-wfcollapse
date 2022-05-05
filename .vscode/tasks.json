@@ -1,0 +1,49 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Generate Cmake",
+            "type": "shell",
+            "command": "cmake",
+            "args": [
+                "-B build",
+                "-G \"MinGW Makefiles\""
+            ],
+            "problemMatcher": []
+        },
+        {
+            "label": "Generate Cmake Debug",
+            "type": "shell",
+            "command": "cmake",
+            "args": [
+                "-B build",
+                "-G \"MinGW Makefiles\"",
+                "-DCMAKE_BUILD_TYPE=Debug"
+            ],
+            "problemMatcher": []
+        },
+        {
+            "label": "Build Cmake",
+            "type": "shell",
+            "command": "cmake --build build",
+            "problemMatcher": []
+        },
+        {
+            "label": "Run Project",
+            "type": "process",
+            "command": "${workspaceFolder}/build/app.exe",
+            "problemMatcher": []
+        },
+        {
+            "label": "Build and Run Project",
+            "type": "shell",
+            "command": "exit",
+            "dependsOrder": "sequence",
+            "dependsOn": [
+                "Build Cmake",
+                "Run Project"
+            ],
+            "problemMatcher": []
+        }
+    ]
+}
